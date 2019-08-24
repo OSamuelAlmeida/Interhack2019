@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb } from 'antd';
 import OrgPage from './components/OrgPage';
 import OrgDetails from './components/OrgDetails';
+import AddNewOrg from './components/AddNewOrg';
 const { Header, Content, Footer } = Layout;
 
 function AppRouter() {
@@ -20,9 +21,10 @@ function AppRouter() {
               <Menu.Item key="2"><Link to="/details">Detalhes</Link></Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '50px' }}>
+          <Content style={{ padding: '50px', backgroundColor: '#F0F0F0' }}>
             <Route path="/" exact component={OrgPage} />
-            <Route path="/details" exact component={OrgDetails} />
+            <Route path="/details/:id" exact component={OrgDetails} />
+            <Route path="/add-new-org" exact component={AddNewOrg} />
           </Content>
       </Router>
     );
