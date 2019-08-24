@@ -5,8 +5,7 @@ import OrgCard from './OrgCard';
 class OrgList extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Lista de Organizações</h1>
+            <div style={{margin: '50px'}}>
                 <Row gutter={16}>
                     <Col span={8}>
                         <OrgCard title="Teste" percent={10}/>
