@@ -10,7 +10,7 @@ import {
 } from 'antd';
 import BackButton from './BackButton';
 
-import './css/AddNewOrg.css';
+import './css/CustomForm.css';
 
 const formItemLayout = {
     labelCol: { span: 8 },
