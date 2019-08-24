@@ -8,13 +8,13 @@ class OrgList extends React.Component {
             <div style={{margin: '50px'}}>
                 <Row gutter={16}>
                     <Col span={8}>
-                        <OrgCard title="Teste" percent={10}/>
+                        <OrgCard id={1} title="CAASO" percent={10} image="https://minervacaaso.files.wordpress.com/2017/02/logo_caaso_colegio.png?w=425&h=329"/>
                    </Col>
                     <Col span={8}>
-                        <OrgCard title="Teste 2" percent={50}/>
+                        <OrgCard id={2} title="Teste 2" percent={50}/>
                    </Col>
                     <Col span={8}>
-                        <OrgCard title="Teste 3" percent={100}/>
+                        <OrgCard id={3} title="Teste 3" percent={100}/>
                    </Col>
                 </Row>
             </div>
