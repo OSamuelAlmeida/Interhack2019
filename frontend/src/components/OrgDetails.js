@@ -2,13 +2,17 @@ import React from 'react';
 import { Card, Tabs, Typography, Progress, Button } from 'antd';
 import './OrgDetails.css';
 
+import BackButton from './BackButton';
+
 const { TabPane } = Tabs;
 const { Title, Paragraph } = Typography;
+
 
 class OrgDetails extends React.Component {
     render() {
         return (
             <div style={{width:'80%', margin:'0% 10%'}}>
+                <BackButton to="/" />
                 <Card
                     hoverable
                     style={{ width: 'auto', marginTop:'40px' }}
