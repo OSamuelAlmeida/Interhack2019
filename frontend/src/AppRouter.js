@@ -36,7 +36,6 @@ function AppRouter() {
             <Route path="/details/:id" exact component={OrgDetails} />
             <Route path="/add-new-org" exact component={AddNewOrg} />
             <Route path="/login" exact component={Login} />
-            <Route path="/register" exact component={Register} />
           </Content>
       </Router>
     );
