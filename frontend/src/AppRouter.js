@@ -18,7 +18,7 @@ function AppRouter() {
               style={{ lineHeight: '64px' }}
             >
               <Menu.Item key="1"><Link to="/">Inicio</Link></Menu.Item>
-              <Menu.Item key="2"><Link to="/details">Detalhes</Link></Menu.Item>
+              <Menu.Item key="2"><Link to="/details/1">Detalhes</Link></Menu.Item>
             </Menu>
           </Header>
           <Content style={{ padding: '50px', backgroundColor: '#F0F0F0' }}>
