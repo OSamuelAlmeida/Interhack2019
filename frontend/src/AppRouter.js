@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Layout, Menu, Icon } from 'antd';
+import { Button, Layout, Menu, Icon } from 'antd';
 import OrgPage from './components/OrgPage';
 import OrgDetails from './components/OrgDetails';
 import AddNewOrg from './components/AddNewOrg';
@@ -19,10 +19,15 @@ function AppRouter() {
               defaultSelectedKeys={['1']}
               style={{ lineHeight: '64px' }}
             >
-              <Menu.Item key="1"><Link to="/">Inicio</Link></Menu.Item>
-              <Menu.Item key="2"><Link to="/details/1">Detalhes</Link></Menu.Item>
-              <Menu.Item key="3" style={{float: 'right'}}><Link to="/login">Entrar</Link></Menu.Item>
-              <Menu.Item key="4" style={{float: 'right'}}><Link to="/register">Registrar</Link></Menu.Item>
+              <Menu.Item key="1" style={{float: 'left'}}><Link to="/">Inicio</Link></Menu.Item>
+              <Menu.Item key="2" style={{float: 'right' }}>
+                <Link to="/login">
+                  <Button type="primary" shape="round">
+                    Entrar
+                  </Button>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="3" style={{float: 'right'}}><Link to="/register">Registrar</Link></Menu.Item>
             </Menu>
           </Header>
           <Content style={{ padding: '50px', backgroundColor: '#F0F0F0' }}>
