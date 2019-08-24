@@ -29,7 +29,7 @@ class Login extends React.Component {
                 <div className="form-div">
                     <h1>Entrar</h1>
                     <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-                        <Form.Item label="Nome">
+                        <Form.Item label="E-mail">
                             <Input /> 
                         </Form.Item> 
                         <Form.Item label="Senha">
