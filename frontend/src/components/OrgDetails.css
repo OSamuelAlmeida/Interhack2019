@@ -1,0 +1,35 @@
+.Meta{
+
+  width: 90% !important;
+  margin: 25px 5% !important; 
+  text-align:left;
+  color:#FFF;
+
+}
+
+.Meta-Concluida{
+
+    background-color: #a0d911 !important;
+
+}
+
+.Meta-Andamento{
+
+    background-color: #fadb14 !important;
+    color:rgba(0, 0, 0, 0.85);
+
+}
+
+.Meta-Cancelada{
+
+    background-color: #fa541c !important;
+
+}
+
+.Meta-Pendente{
+
+    background-color: #FFF !important;
+    border:1px solid #bfbfbf;
+    color:rgba(0, 0, 0, 0.85);
+
+}
