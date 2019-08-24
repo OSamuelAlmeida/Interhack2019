@@ -5,7 +5,7 @@ import { Card, Progress } from 'antd';
 class AddOrgCard extends React.Component {
     render() {
         return (
-            <Link to={"add-new-org/" + this.props.id}>
+            <Link to="add-new-org/">
                 <Card style={{width: 300 }}>
                     <div className="custom-image">
                         <img alt="example" width="100%" height="200px" src={process.env.PUBLIC_URL + '/img/add.png'} />
