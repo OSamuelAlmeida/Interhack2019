@@ -25,6 +25,21 @@
   color: #61dafb;
 }
 
+#btnEntrar{
+
+  background-color:transparent;
+  padding-bottom:1;
+  border-color: #fff;
+
+}
+
+.ant-menu-item-selected > a > #btnEntrar{
+
+  border:0px;
+  box-shadow: none;
+
+}
+
 .ant-tabs-nav-container{
 
   line-height:2 !important;

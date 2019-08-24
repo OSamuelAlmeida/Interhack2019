@@ -6,6 +6,7 @@ import OrgDetails from './components/OrgDetails';
 import AddNewOrg from './components/AddNewOrg';
 import Login from './components/Login';
 import Register from './components/Register';
+import './App.css';
 const { Header, Content, Footer } = Layout;
 
 function AppRouter() {
@@ -22,7 +23,7 @@ function AppRouter() {
               <Menu.Item key="1" style={{float: 'left'}}><Link to="/">Inicio</Link></Menu.Item>
               <Menu.Item key="2" style={{float: 'right' }}>
                 <Link to="/login">
-                  <Button type="primary" shape="round">
+                  <Button type="primary" shape="round" id="btnEntrar">
                     Entrar
                   </Button>
                 </Link>
