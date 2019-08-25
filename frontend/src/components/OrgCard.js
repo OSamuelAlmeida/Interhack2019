@@ -13,7 +13,7 @@ class OrgCard extends React.Component {
 
         return (
             <Link to={"details/" + this.props.id}>
-                <Card style={{width: 300 }}>
+                <Card style={{width: 300, margin:'0 auto'}}>
                     <div className="custom-image">
                         <img alt="example" width="100%" height="200px" src={image} />
                     </div>

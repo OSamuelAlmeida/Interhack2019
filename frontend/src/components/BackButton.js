@@ -5,7 +5,7 @@ import React from 'react';
 class BackButton extends React.Component {
     render() {
         return (
-            <div style={{textAlign: 'left', margin: '10px'}}>
+            <div style={{textAlign: 'left'}}>
                 <Link to={this.props.to}>
                     <Button type="primary">
                         <Icon type="left" />
