@@ -13,7 +13,9 @@ function AppRouter() {
     return (
         <Router>
           <Header>
-            <div className="logo" />
+            <div className="logo">
+              <img src={process.env.PUBLIC_URL + '/img/logo.png'}/>
+            </div>
             <Menu
               theme="dark"
               mode="horizontal"
