@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { Card, Spin } from 'antd';
+import { Card, Spin, Form, Input } from 'antd';
+
+const formItemLayout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 10 },
+};
 
 class GoalsListPane extends React.Component {
     state = {

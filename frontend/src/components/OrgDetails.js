@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Card, Tabs, Typography, Progress, Button, Spin } from 'antd';
+import { Card, Tabs, Typography, Progress, Button, Spin, Form, Input, Select } from 'antd';
 import './OrgDetails.css';
 
 import BackButton from './BackButton';
@@ -9,9 +9,85 @@ import GoalsProgress from './GoalsProgress';
 
 const { TabPane } = Tabs;
 const { Title, Paragraph } = Typography;
+const formItemLayout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 10 },
+};
 
+class MetaForm extends React.Component {
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        this.props.form.validateFields((err, values) => {
+            axios.post('http://172.26.135.171:8080/api/meta/', {
+                title: values.titulo,
+                description: values.descricao,
+                group: this.props.id,
+                status: values.status
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+    }
+
+    handleChange = () => {
+
+    }
+
+    render() {
+
+        const { getFieldDecorator } = this.props.form;
+
+        return (                    
+            <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                <Form.Item label="Titulo">
+                    {getFieldDecorator('titulo', {
+                        rules: [{ required: true, message: 'Por favor, insira um titulo!' }],
+                    })(
+                        <Input name="titulo" placeholder="Título" style={{margin:0, height:'40px'}} />
+                    )}
+                </Form.Item>
+                <Form.Item label="Descrição">
+                    {getFieldDecorator('descricao', {
+                        rules: [{ required: true, message: 'Por favor, insira uma descrição!' }],
+                    })(
+                        <Input name="descricao" placeholder="Descrição" style={{margin:0, height:'40px'}} />
+                    )}
+                </Form.Item>
+
+                <Form.Item label="Situação">
+                    {getFieldDecorator('status', {
+                        rules: [{ required: true, message: 'Favor selecionar um status!' }],
+                    })(
+                        <Select name="status" defaultValue="1" style={{ width: 120 }} onChange={this.handleChange}>
+                            <Select.Option value="1">Pendente</Select.Option>
+                            <Select.Option value="3">Concluída</Select.Option>
+                            <Select.Option value="2">Em andamento</Select.Option>
+                            <Select.Option value="4">Cancelada</Select.Option>
+                        </Select>
+                    )}
+                </Form.Item> 
+
+                <Form.Item wrapperCol={{
+                    sm: { span: 16, offset: 5 },
+                }} >
+                    <Button style={{ width: '62.5%', height: '50px'}} type="primary" htmlType="submit" className="login-form-button">
+                        Adicionar
+                    </Button> 
+                </Form.Item>
+            </Form>
+        );
+    }
+}
+
+const WrappedMetaForm = Form.create({name: 'meta_form'})(MetaForm);
 
 class OrgDetails extends React.Component {
+
     state = {
         group: null,
         goals: null,
@@ -58,7 +134,12 @@ class OrgDetails extends React.Component {
                     <TabPane tab="Metas" key="1">
                         <GoalsListPane group={this.state.group.id} />
                     </TabPane>
-                    <TabPane tab="Desempenho" key="2">
+                    <TabPane tab="Adicionar Meta" key="2">
+                        <h2>Adicionar meta</h2>
+                        <br />
+                        <WrappedMetaForm id={this.props.match.params.id} />
+                    </TabPane>
+                    <TabPane tab="Desempenho" key="3">
                         <GoalsProgress group={this.state.group.id}/>
                     </TabPane>
                 </Tabs>
