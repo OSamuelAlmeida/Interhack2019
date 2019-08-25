@@ -228,7 +228,7 @@ class OrgList extends React.Component {
             </Row>
             {getRows()}
 
-            </div>)};
+        </div>)};
 
 
             return topThree();
