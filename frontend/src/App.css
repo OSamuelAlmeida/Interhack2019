@@ -25,6 +25,33 @@
   color: #61dafb;
 }
 
+.ant-layout-content{
+
+  background-color: #f4f6f9 !important;
+
+}
+
+#btnEntrar{
+
+  background-color:transparent;
+  padding-bottom:1;
+  border-color: #fff;
+
+}
+
+.ant-menu-item-selected > a > #btnEntrar{
+
+  border:0px;
+  box-shadow: none;
+
+}
+
+.ant-tabs-nav-container{
+
+  line-height:2 !important;
+
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -32,4 +59,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.logo {
+  width: 200px;
+  float: left;
 }
