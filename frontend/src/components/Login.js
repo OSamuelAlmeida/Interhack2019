@@ -31,20 +31,22 @@ class Login extends React.Component {
                     <Card className="form-div" style={{ width: 'auto', marginTop:'40px', height:'300px' }}>
                         <h1>Entrar</h1>
                         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-                            <Form.Item label="E-mail">
-                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="E-mail" /> 
-                            </Form.Item> 
-                            <Form.Item label="Senha">
-                                <Input.Password prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Senha" /> 
-                            </Form.Item> 
+                            <div style={{width:'80%', margin:'0 10%'}}>
+                                <Form.Item label="E-mail">
+                                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="E-mail" /> 
+                                </Form.Item> 
+                                <Form.Item label="Senha">
+                                    <Input.Password prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Senha" /> 
+                                </Form.Item> 
 
-                            <Form.Item wrapperCol={{
-                                sm: { span: 16, offset: 5 },
-                            }} >
-                                <Button style={{ width: '200px', height: '50px', float:'right'}} type="primary" htmlType="submit" className="login-form-button">
-                                    Entrar
-                                </Button> 
-                            </Form.Item>
+                                <Form.Item wrapperCol={{
+                                    sm: { span: 16, offset: 5 },
+                                }} >
+                                    <Button style={{ width: '63%', height: '50px'}} type="primary" htmlType="submit" className="login-form-button">
+                                        Entrar
+                                    </Button> 
+                                </Form.Item>
+                            </div>
                         </Form>
                     </Card>
                 </div>
