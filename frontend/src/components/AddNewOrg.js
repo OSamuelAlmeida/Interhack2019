@@ -6,7 +6,8 @@ import {
     Upload, 
     Icon,
     Input,
-    message
+    message,
+    Card
 } from 'antd';
 import BackButton from './BackButton';
 
@@ -73,39 +74,41 @@ class AddNewOrg extends React.Component {
 
         return (
             <React.Fragment>
-                <BackButton to="/" />
-                <div className="form-div">
-                    <h1>Adicionar nova organização</h1>
-                    <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-                        <Form.Item label="Nome">
-                            <Input /> 
-                        </Form.Item> 
-                        <Form.Item label="Descrição">
-                            <Input.TextArea rows={9} />
-                        </Form.Item> 
+                <div style={{width:'90%', margin:'0% auto'}}>
+                  <BackButton to="/" />
+                  <Card style={{ width: 'auto', marginTop:'40px' }}>
+                      <h1>Adicionar nova organização</h1>
+                      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                          <Form.Item label="Nome">
+                              <Input /> 
+                          </Form.Item> 
+                          <Form.Item label="Descrição">
+                              <Input.TextArea rows={9} />
+                          </Form.Item> 
 
-                        <Form.Item label="Imagem">
-                            <Upload
-                                name="avatar"
-                                listType="picture-card"
-                                className="avatar-uploader"
-                                showUploadList={false}
-                                //action=""
-                                beforeUpload={beforeUpload}
-                                onChange={this.handleImageChange}
-                            >
-                                {this.state.imageUrl ? <img src={this.state.imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-                            </Upload>
-                        </Form.Item>
+                          <Form.Item label="Imagem">
+                              <Upload
+                                  name="avatar"
+                                  listType="picture-card"
+                                  className="avatar-uploader"
+                                  showUploadList={false}
+                                  //action=""
+                                  beforeUpload={beforeUpload}
+                                  onChange={this.handleImageChange}
+                              >
+                                  {this.state.imageUrl ? <img src={this.state.imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                              </Upload>
+                          </Form.Item>
 
-                        <Form.Item wrapperCol={{
-                            sm: { span: 16, offset: 5 },
-                        }} >
-                            <Button style={{ width: '200px', height: '50px'}} type="primary" htmlType="submit" className="login-form-button">
-                                Adicionar
-                            </Button> 
-                        </Form.Item>
-                    </Form>
+                          <Form.Item wrapperCol={{
+                              sm: { span: 16, offset: 5 },
+                          }} >
+                              <Button style={{ width: '200px', height: '50px'}} type="primary" htmlType="submit" className="login-form-button">
+                                  Adicionar
+                              </Button> 
+                          </Form.Item>
+                      </Form>
+                  </Card>
                 </div>
             </React.Fragment>
         );

@@ -13,26 +13,28 @@ function AppRouter() {
     return (
         <Router>
           <Header>
-            <Link to="/">
-              <div className="logo">
-                <img src={process.env.PUBLIC_URL + '/img/logo.png'}/>
-              </div>
-            </Link>
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={['1']}
-              style={{ lineHeight: '64px' }}
-            >
-              <Menu.Item key="1" style={{float: 'left'}}><Link to="/">Inicio</Link></Menu.Item>
-              <Menu.Item key="2" style={{float: 'right' }}>
-                <Link to="/login">
-                  <Button type="primary" shape="round" id="btnEntrar">
-                    Entrar
-                  </Button>
-                </Link>
-              </Menu.Item>
-            </Menu>
+            <div style={{width:'93%', margin:'0 auto'}}>
+              <Link to="/">
+                <div className="logo">
+                  <img src={process.env.PUBLIC_URL + '/img/logo.png'}/>
+                </div>
+              </Link>
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={['1']}
+                style={{ lineHeight: '64px' }}
+              >
+                <Menu.Item key="1" style={{float: 'left'}}><Link to="/">Inicio</Link></Menu.Item>
+                <Menu.Item key="2" style={{float: 'right' }}>
+                  <Link to="/login">
+                    <Button type="primary" shape="round" id="btnEntrar">
+                      Entrar
+                    </Button>
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </div>
           </Header>
           <Content style={{ padding: '50px', backgroundColor: '#F0F0F0' }}>
             <Route path="/" exact component={OrgPage} />

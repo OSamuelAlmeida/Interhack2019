@@ -26,7 +26,7 @@ class Login extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div style={{width:'80%', margin:'0% 10%'}}>
+                <div style={{width:'90%', margin:'0 auto'}}>
                     <BackButton to="/" />
                     <Card className="form-div" style={{ width: 'auto', marginTop:'40px', height:'300px' }}>
                         <h1>Entrar</h1>

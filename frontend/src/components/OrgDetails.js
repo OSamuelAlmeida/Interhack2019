@@ -33,7 +33,7 @@ class OrgDetails extends React.Component {
 
     render() {
         return this.state.isLoading ? <Spin/> : (
-            <div style={{width:'80%', margin:'0% 10%'}}>
+            <div style={{width:'90%', margin:'0% auto'}}>
                 <BackButton to="/" />
                 <Card
                     hoverable
