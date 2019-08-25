@@ -20,7 +20,7 @@ class OrgCard extends React.Component {
                     <div className="custom-card">
                         <h3>{this.props.title}</h3>
                     </div>
-                    <Progress percent={this.props.percent}/>
+                    <Progress percent={parseInt(this.props.percent)}/>
                 </Card> 
             </Link>
         );

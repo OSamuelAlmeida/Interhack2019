@@ -33,9 +33,7 @@
 }
 
 .Meta-Pendente{
-
-    background-color: #FFF !important;
+    background-color: rgb(255, 167, 51) !important;
     border:1px solid #bfbfbf;
-    color:rgba(0, 0, 0, 0.85);
-
+    color:rgba(0, 0, 0, 0.85) !important;
 }

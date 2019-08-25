@@ -207,19 +207,19 @@ class OrgList extends React.Component {
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={this.state.topGroups[0].id} title={this.state.topGroups[0].name}  percent={this.state.topPercent[0]} image={this.state.topGroups[0].logo_url }/>
+                    <ExtendedCard id={this.state.topGroups[0].id} title={this.state.topGroups[0].name}  percent={parseInt(this.state.topPercent[0])} image={this.state.topGroups[0].logo_url }/>
                 </Col>
             </Row>
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={this.state.topGroups[1].id} title={this.state.topGroups[1].name}  percent={this.state.topPercent[1]} image={this.state.topGroups[1].logo_url }/>
+                    <ExtendedCard id={this.state.topGroups[1].id} title={this.state.topGroups[1].name}  percent={parseInt(this.state.topPercent[1])} image={this.state.topGroups[1].logo_url }/>
                 </Col>
             </Row>
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={this.state.topGroups[2].id} title={this.state.topGroups[2].name}  percent={this.state.topPercent[2]} image={this.state.topGroups[2].logo_url }/>
+                    <ExtendedCard id={this.state.topGroups[2].id} title={this.state.topGroups[2].name}  percent={parseInt(this.state.topPercent[2])} image={this.state.topGroups[2].logo_url }/>
                 </Col>
             </Row>
 
