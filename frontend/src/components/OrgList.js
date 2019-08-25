@@ -91,6 +91,52 @@ class OrgList extends React.Component {
         }));
     }
 
+    onSearch = (value) => {
+        var groups = [];
+        var groupsPercent = []
+
+        axios.all([
+            axios.get('http://172.26.135.171:8080/api/group/?search=' + value),
+            axios.get('http://172.26.135.171:8080/api/meta/'),
+        ]).then(axios.spread((groupsData, metasData, topData) => {
+            groups = groupsData.data;
+
+            const all_metas = metasData.data;
+
+            for (var i = 0; i < groups.length; ++i) {
+                var group_id = groups[i].id;
+                var metasCount = 0;
+                var metasCompleted = 0;
+    
+                for (var j = 0; j < all_metas.length; ++j) {
+                    if (all_metas[j].group == group_id) {
+                        metasCount++;
+    
+                        if (all_metas[j].status == 3) {
+                            metasCompleted++;
+                        }
+                    }
+                }
+
+                var metasPercent = 0;
+    
+                if (metasCount > 0) {
+                    metasPercent = metasCompleted / metasCount * 100;
+                }
+
+                groupsPercent.push(metasPercent);
+            }
+
+            this.setState({
+                ...this.state,
+                isLoading: false,
+                groups: groups,
+                groupsPercent: groupsPercent
+            });
+        }));
+
+    }
+
     render() {
         const getPage = () => {
 
@@ -175,7 +221,7 @@ class OrgList extends React.Component {
                         <Input.Search
                             placeholder="Pesquisar..."
                             style={{ width: 300, height:40 }}
-                            onSearch={value => console.log(value)}
+                            onSearch={this.onSearch}
                         />
                     </div>
                 </Col>
