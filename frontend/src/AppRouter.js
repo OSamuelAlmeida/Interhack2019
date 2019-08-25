@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Button, Layout, Menu, Icon } from 'antd';
+import { Button, Layout, Menu, Icon, Switch } from 'antd';
+import Intro from './components/Intro';
 import OrgPage from './components/OrgPage';
 import OrgDetails from './components/OrgDetails';
 import AddNewOrg from './components/AddNewOrg';
@@ -12,6 +13,7 @@ const { Header, Content, Footer } = Layout;
 function AppRouter() {
     return (
         <Router>
+          <Route path="/intro" exact component={Intro}></Route>
           <Header>
             <div style={{width:'93%', margin:'0 auto'}}>
               <Link to="/">

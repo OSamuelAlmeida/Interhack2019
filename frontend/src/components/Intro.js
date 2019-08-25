@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Background from "../bg.png";
 import { Layout, Menu, Breadcrumb, Typography, Button } from 'antd';
 
@@ -19,7 +20,9 @@ class Intro extends Component {
                     <p style={{color:'white', fontSize:24, marginTop:20}}>
                         Transparência é um tesão, meu pau na tua mão c:
                     </p>
-                    <Button type="primary" style={{width:'280px', height:'60px', fontSize:22}}>Comece a usar agora!</Button>
+                    <Link to="/">
+                      <Button type="primary" style={{width:'280px', height:'60px', fontSize:22}}>Comece a usar agora!</Button>
+                    </Link>
                 </center>
             </div>
 
