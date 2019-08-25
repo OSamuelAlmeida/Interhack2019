@@ -148,11 +148,12 @@ class OrgList extends React.Component {
                     </div>
                 </Col>
             </Row>
+            {getRows()}
 
         </div>);
 
 
-            return [ topThree, getRows() ];
+            return [ topThree ];
         };
 
 
