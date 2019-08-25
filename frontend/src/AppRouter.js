@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import { Button, Layout, Menu, Icon, Switch } from 'antd';
 import Intro from './components/Intro';
 import OrgPage from './components/OrgPage';
@@ -10,7 +11,7 @@ import Register from './components/Register';
 import './App.css';
 const { Header, Content, Footer } = Layout;
 
-function AppRouter() {
+function AppRouter(props) {
     return (
         <Router>
           <Route path="/intro" exact component={Intro}></Route>
@@ -28,13 +29,15 @@ function AppRouter() {
                 style={{ lineHeight: '64px' }}
               >
                 <Menu.Item key="1" style={{float: 'left'}}><Link to="/">Inicio</Link></Menu.Item>
-                <Menu.Item key="2" style={{float: 'right' }}>
+                {props.isLoggedIn ? <div style={{float: 'right'}} key="2" disabled={true}>Bem vindo, {props.user.username}</div> : 
+                (<Menu.Item key="2" style={{float: 'right' }}>
                   <Link to="/login">
                     <Button type="primary" shape="round" id="btnEntrar">
                       Entrar
                     </Button>
                   </Link>
-                </Menu.Item>
+                </Menu.Item>)
+                }
               </Menu>
             </div>
           </Header>
@@ -47,7 +50,12 @@ function AppRouter() {
           </Content>
       </Router>
     );
-  }
+}
+
+const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn,
+  user: state.user
+});
   
-  export default AppRouter;
+  export default connect(mapStateToProps)(AppRouter);
   
