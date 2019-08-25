@@ -24,9 +24,7 @@ class OrgList extends React.Component {
             const all_metas = metasData.data;
 
             for (var i = 0; i < groups.length; ++i) {
-                console.log(i);
                 var group_id = groups[i].id;
-                console.log(group_id);
                 var metasCount = 0;
                 var metasCompleted = 0;
     
@@ -43,15 +41,11 @@ class OrgList extends React.Component {
                 var metasPercent = 0;
     
                 if (metasCount > 0) {
-                    metasPercent = metasCompleted / metasCount;
+                    metasPercent = metasCompleted / metasCount * 100;
                 }
 
                 groupsPercent.push(metasPercent);
             }
-
-            console.log('O CARAIO 111!!!!!!');
-            console.log(groups);
-            console.log(groupsPercent);
 
             this.setState({
                 ...this.state,
@@ -76,8 +70,8 @@ class OrgList extends React.Component {
                     }
 
                     var column = (
-                        <Col span={8}>
-                            <OrgCard id={currentIndex} title={this.state.groups[currentIndex].name} percent={this.state.groupsPercent[currentIndex]} image={this.state.groups[currentIndex].logo_url}/>
+                        <Col key={currentIndex} span={8}>
+                            <OrgCard id={this.state.groups[currentIndex].id} key={currentIndex} title={this.state.groups[currentIndex].name} percent={this.state.groupsPercent[currentIndex]} image={this.state.groups[currentIndex].logo_url}/>
                         </Col>
                     );
                     
@@ -91,7 +85,7 @@ class OrgList extends React.Component {
                 for (var i = 0; i < rowsCount; ++i) {
                     var currentColumns = [];
 
-                    for (var i = 0; i < 3; ++i) {
+                    for (var j = 0; j < 3; ++j) {
                         currentColumns.push(columns[currentIndex]);
                         currentIndex++;
                     }
