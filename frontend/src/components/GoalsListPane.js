@@ -13,7 +13,7 @@ class GoalsListPane extends React.Component {
         metas: null
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get('http://172.26.135.171:8080/api/meta/').then(res => {
             const all_metas = res.data;
             const group_id = this.props.group;
@@ -57,7 +57,7 @@ class GoalsListPane extends React.Component {
             case 3:
                 return "Meta Meta-Concluida"
             case 4:
-                return "Meta"
+                return "Meta Meta-Cancelada"
         }
     }
 

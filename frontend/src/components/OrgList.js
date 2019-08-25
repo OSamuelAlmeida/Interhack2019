@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Col, Row, Input, Typography, Spin } from 'antd';
 import axios from 'axios';
 import OrgCard from './OrgCard';
@@ -145,6 +146,7 @@ class OrgList extends React.Component {
                 var currentIndex = 0;
                 var rowsCount = 1
 
+
                 while (currentIndex < this.state.groups.length) {
                     if (currentIndex % 3 == 0) {
                         rowsCount++;
@@ -158,6 +160,17 @@ class OrgList extends React.Component {
                     
                     columns.push(column);
                     currentIndex++;
+
+                    if (this.props.isLoggedIn && currentIndex + 1 > this.state.groups.length) {
+                        if ((currentIndex + 1) % 3 == 0) {
+                            rowsCount++;
+                        }
+
+                        columns.push(
+                        <Col key={currentIndex} span={8}>
+                            <AddOrgCard />
+                        </Col>);
+                    }
                 }
 
                 var rows = [];
@@ -194,19 +207,19 @@ class OrgList extends React.Component {
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={this.state.topGroups[0].id} title={this.state.topGroups[0].name}  percent={this.state.topPercent[0]} image={this.state.topGroups[0].image}/>
+                    <ExtendedCard id={this.state.topGroups[0].id} title={this.state.topGroups[0].name}  percent={this.state.topPercent[0]} image={this.state.topGroups[0].logo_url }/>
                 </Col>
             </Row>
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={this.state.topGroups[1].id} title={this.state.topGroups[1].name}  percent={this.state.topPercent[1]} image={this.state.topGroups[1].image}/>
+                    <ExtendedCard id={this.state.topGroups[1].id} title={this.state.topGroups[1].name}  percent={this.state.topPercent[1]} image={this.state.topGroups[1].logo_url }/>
                 </Col>
             </Row>
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={this.state.topGroups[2].id} title={this.state.topGroups[2].name}  percent={this.state.topPercent[2]} image={this.state.topGroups[2].image}/>
+                    <ExtendedCard id={this.state.topGroups[2].id} title={this.state.topGroups[2].name}  percent={this.state.topPercent[2]} image={this.state.topGroups[2].logo_url }/>
                 </Col>
             </Row>
 
@@ -239,4 +252,10 @@ class OrgList extends React.Component {
     };
 }
 
-export default OrgList;
+const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn,
+  user: state.user
+});
+
+
+export default connect(mapStateToProps)(OrgList);

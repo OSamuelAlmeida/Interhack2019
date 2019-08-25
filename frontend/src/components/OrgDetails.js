@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import { Card, Tabs, Typography, Progress, Button, Spin, Form, Input, Select } from 'antd';
 import './OrgDetails.css';
 
@@ -61,7 +62,7 @@ class MetaForm extends React.Component {
 
                 <Form.Item label="Situação">
                     {getFieldDecorator('status', {
-                        rules: [{ required: true, message: 'Favor selecionar um status!' }],
+                        rules: [{ required: true, message: 'Por favor, selecione um status!' }],
                     })(
                         <Select name="status" defaultValue="1" style={{ width: 120 }} onChange={this.handleChange}>
                             <Select.Option value="1">Pendente</Select.Option>
@@ -140,7 +141,7 @@ class OrgDetails extends React.Component {
                         <WrappedMetaForm id={this.props.match.params.id} />
                     </TabPane>
                     <TabPane tab="Desempenho" key="3">
-                        <GoalsProgress group={this.state.group.id}/>
+                        <GoalsProgress group={this.state.group.id} push={this.props.history.push}/>
                     </TabPane>
                 </Tabs>
 
@@ -151,4 +152,4 @@ class OrgDetails extends React.Component {
     }
 }
 
-export default OrgDetails;
+export default withRouter(OrgDetails);
