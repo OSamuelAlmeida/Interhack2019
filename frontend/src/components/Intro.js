@@ -18,7 +18,7 @@ class Intro extends Component {
                     <Title level={1} style={{fontSize:60, color:'white'}}><strong>QUARTZ</strong></Title>
                     <hr style={{color:'white', width:'50px'}}></hr>
                     <p style={{color:'white', fontSize:24, marginTop:20}}>
-                        Transparência é um tesão, meu pau na tua mão c:
+                      Transparência é eficiência, organização é a solução
                     </p>
                     <Link to="/">
                       <Button type="primary" style={{width:'280px', height:'60px', fontSize:22}}>Comece a usar agora!</Button>
