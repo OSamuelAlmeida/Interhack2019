@@ -11,20 +11,50 @@ class OrgList extends React.Component {
     state = {
         isLoading: true, 
         groups: null,
-        groupsPercent: []
+        groupsPercent: [],
+        topGroups: [],
+        topPercents: []
     }
 
     componentDidMount() {
-        var groups = null;
+        var groups = [];
         var groupsPercent = []
+        var topGroups = []
+        var topPercent = []
 
         axios.all([
             axios.get('http://172.26.135.171:8080/api/group/'),
-            axios.get('http://172.26.135.171:8080/api/meta/')
-        ]).then(axios.spread((groupsData, metasData) => {
+            axios.get('http://172.26.135.171:8080/api/meta/'),
+            axios.get('http://172.26.135.171:8080/api/group/count/')
+        ]).then(axios.spread((groupsData, metasData, topData) => {
             groups = groupsData.data;
+            topGroups = topData.data;
 
             const all_metas = metasData.data;
+
+            for (var i = 0; i < topGroups.length; ++i) {
+                var group_id = topGroups[i].id;
+                var metasCount = 0;
+                var metasCompleted = 0;
+    
+                for (var j = 0; j < all_metas.length; ++j) {
+                    if (all_metas[j].group == group_id) {
+                        metasCount++;
+    
+                        if (all_metas[j].status == 3) {
+                            metasCompleted++;
+                        }
+                    }
+                }
+
+                var metasPercent = 0;
+    
+                if (metasCount > 0) {
+                    metasPercent = metasCompleted / metasCount * 100;
+                }
+
+                topPercent.push(metasPercent);
+            }
 
             for (var i = 0; i < groups.length; ++i) {
                 var group_id = groups[i].id;
@@ -54,7 +84,9 @@ class OrgList extends React.Component {
                 ...this.state,
                 isLoading: false,
                 groups: groups,
-                groupsPercent: groupsPercent
+                groupsPercent: groupsPercent,
+                topGroups: topGroups,
+                topPercent: topPercent,
             });
         }));
     }
@@ -102,7 +134,7 @@ class OrgList extends React.Component {
 
                 return rows;
             };
-            const topThree = (
+            const topThree = () => { return (
             <div style={{width:'90%', margin:'0 auto'}}>
 
             <Row>
@@ -116,19 +148,19 @@ class OrgList extends React.Component {
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={1} title="CAASO" description="blablabla" percent={10} image="https://minervacaaso.files.wordpress.com/2017/02/logo_caaso_colegio.png?w=425&h=329"/>
+                    <ExtendedCard id={this.state.topGroups[0].id} title={this.state.topGroups[0].name}  percent={this.state.topPercent[0]} image={this.state.topGroups[0].image}/>
                 </Col>
             </Row>
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={1} title="CAASO" description="blablabla" percent={10} image="https://minervacaaso.files.wordpress.com/2017/02/logo_caaso_colegio.png?w=425&h=329"/>
+                    <ExtendedCard id={this.state.topGroups[1].id} title={this.state.topGroups[1].name}  percent={this.state.topPercent[1]} image={this.state.topGroups[1].image}/>
                 </Col>
             </Row>
 
             <Row style={{marginTop:'20px'}}>
                 <Col span={24}>
-                    <ExtendedCard id={1} title="CAASO" description="blablabla" percent={10} image="https://minervacaaso.files.wordpress.com/2017/02/logo_caaso_colegio.png?w=425&h=329"/>
+                    <ExtendedCard id={this.state.topGroups[2].id} title={this.state.topGroups[2].name}  percent={this.state.topPercent[2]} image={this.state.topGroups[2].image}/>
                 </Col>
             </Row>
 
@@ -150,10 +182,10 @@ class OrgList extends React.Component {
             </Row>
             {getRows()}
 
-        </div>);
+        </div>)};
 
 
-            return [ topThree ];
+            return topThree();
         };
 
 
