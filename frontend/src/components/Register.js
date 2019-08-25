@@ -24,7 +24,20 @@ class RegisterForm extends React.Component {
         e.preventDefault();
 
         this.props.form.validateFields((err, values) => {
-            console.log(values);
+            axios.post('http://172.26.135.171:8080/api/user/', {
+                username: values.username,
+                password: values.password
+            })
+            .then(function (response) {
+                axios.post('http://172.26.135.171:8080/api/usersettings/', {
+                    type: 1,
+                    user: response.data.id,
+                    group: values.group
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         });
     }
 
