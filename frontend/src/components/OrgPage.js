@@ -6,20 +6,7 @@ class OrgPage extends React.Component {
     render() {
         return (
             <React.Fragment>
-                  <Row>
-                    <Col span={8}><div style={{width:'300px'}}></div></Col>
-                    <Col span={8}><div style={{width:'300px'}}></div></Col>
-                    <Col span={8}>
-                        <div style={{width:'300px', margin:'0 auto', textAlign:'right'}}>
-                            <Input.Search
-                                placeholder="Pesquisar..."
-                                style={{ width: 200 }}
-                                onSearch={value => console.log(value)}
-                            />
-                        </div>
-                    </Col>
-                </Row>
-                <OrgList></OrgList>
+               <OrgList></OrgList>
             </React.Fragment>
         );
     }
