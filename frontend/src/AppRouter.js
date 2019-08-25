@@ -13,7 +13,9 @@ function AppRouter() {
     return (
         <Router>
           <Header>
-            <div className="logo" />
+            <div className="logo">
+              <img src={process.env.PUBLIC_URL + '/img/logo.png'}/>
+            </div>
             <Menu
               theme="dark"
               mode="horizontal"
@@ -28,7 +30,6 @@ function AppRouter() {
                   </Button>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="3" style={{float: 'right'}}><Link to="/register">Registrar</Link></Menu.Item>
             </Menu>
           </Header>
           <Content style={{ padding: '50px', backgroundColor: '#F0F0F0' }}>
@@ -36,6 +37,7 @@ function AppRouter() {
             <Route path="/details/:id" exact component={OrgDetails} />
             <Route path="/add-new-org" exact component={AddNewOrg} />
             <Route path="/login" exact component={Login} />
+            <Route path="/register/:id" exact component={Register} />
           </Content>
       </Router>
     );
